@@ -1,4 +1,5 @@
 # reference https://medium.com/@rvisingh1221/install-nginx-ingress-controller-in-aws-eks-890dc9c4ff72
+# This values is used by Terraform Helm to create Load Balancer >> https://github.com/davidlimacardoso/infra-core-terraform/blob/main/infra/aws/artemis/us-east-1/helm.tf 
 controller:
   replicaCount: 2
   minAvailable: 1
