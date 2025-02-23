@@ -1,0 +1,48 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: conversao-dev-ingress
+  namespace: conversao
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"  
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: conversao.dev.jupter.xyz
+    http:
+      paths:
+      - path: /conversao
+        pathType: Prefix
+        backend:
+          service:
+            name: conversao
+            port:
+              number: 80
+      - path: /temperatura
+        pathType: Prefix
+        backend:
+          service:
+            name: conversao-temperatura
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vprofile-dev-ingress
+  namespace: vprofile
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: vpro.dev.jupter.xyz
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-app
+            port:
+              number: 8080
