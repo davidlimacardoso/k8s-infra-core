@@ -1,0 +1,6 @@
+apiVersion: v2
+name: vprofilecharts
+description: A application example, using RABBITMQ, MySQL, MEMCACHE,  and a simple webserver Tomcat.
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
