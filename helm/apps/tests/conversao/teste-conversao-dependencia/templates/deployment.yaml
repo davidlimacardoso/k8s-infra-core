@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: {{ .Release.Name }}
+    namespace: conversao
+spec: 
+    replicas: {{ .Values.app.replicas }}
+    selector:
+        matchLabels:
+            app: {{ .Release.Name }}
+    template:
+        metadata:
+            labels:
+                app: {{ .Release.Name }}
+        spec:
+            containers:
+            - name: {{ .Release.Name }}
+              image: {{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}
+              ports:
+              - containerPort: {{ .Values.app.containerPort }}
+              {{- if .Values.global.postgresql.enabled }}
+              env:
+                - name: POSTGRESQL_DATABASE
+                  value: {{ .Values.global.postgresql.database }}
+                - name: POSTGRESQL_USER
+                  value: {{ .Values.global.postgresql.username }}
+                - name: POSTGRESQL_PASSWORD
+                  value: {{ .Values.global.postgresql.password }}
+              {{- end }}

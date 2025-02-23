@@ -1,0 +1,18 @@
+app:
+  replicas: 1
+  containerPort: 8080
+  image:
+    repository: fabricioveronez/conversao-temperatura
+    tag: v1
+  service:
+    port: 80
+    targetPort: 8080
+    type: ClusterIP
+
+global:
+  postgresql:
+    enabled: true
+    auth:
+      username: postgres
+      password: postgres
+      database: conversao
