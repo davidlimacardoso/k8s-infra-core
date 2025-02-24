@@ -1,0 +1,50 @@
+fullnameOverride: "argocd"
+namespaceOverride: "argocd"
+
+createClusterRoles: false
+
+crds:
+  install: false
+  keep: true
+  annotations: {}
+  additionalLabels: {}
+
+configs:
+  params:
+    ## NOTE: This value should be set when you generate params by other means as it changes ports used by ingress template.
+    server.insecure: true
+    # -- Value for base href in index.html. Used if Argo CD is running behind reverse proxy under subpath different from /
+    server.basehref: /
+
+server:
+  replicas: 1
+    # Argo CD server ingress configuration
+  ingress:
+    # -- Enable an ingress resource for the Argo CD server
+    enabled: true
+    # -- Specific implementation for ingress controller. One of `generic`, `aws` or `gke`
+    ## Additional configuration might be required in related configuration sections
+    controller: aws
+    # -- Additional ingress labels
+    labels: {}
+    # -- Additional ingress annotations
+    ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-1-ssl-passthrough
+    annotations: {}
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+
+    # -- Defines which ingress controller will implement the resource
+    ingressClassName: "nginx"
+    
+    hostname: argocd.dev.jupter.xyz
+
+    # -- The path to Argo CD server
+    path: /
+
+    # -- Ingress path type. One of `Exact`, `Prefix` or `ImplementationSpecific`
+    pathType: Prefix
+
+global:
+  domain: argocd.dev.jupter.xyz
+  secretName: argocd-secret
+  
