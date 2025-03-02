@@ -34,3 +34,35 @@ In order to access the server UI you have the following options:
 After reaching the UI the first time you can login with username: admin and the random password generated during the installation. You can find the password by running:
 
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
+## Throubleshoot
+
+If you encounter the error during the creation of a new application in Argo CD: `"Unable to create application: error creating application: create not allowed while custom resource definition is terminating"`
+
+This issue typically arises when some Argo applications were installed before the Argo server was deleted. To resolve this, you need to remove the last remaining CRD (Custom Resource Definition) related to Argo CD from your Kubernetes cluster.
+
+1. Check Existing CRDs
+First, list the CRDs in the argocd namespace:
+```
+$ kubectl get crd -n argocd
+
+NAME                                         CREATED AT
+applications.argoproj.io                     2025-02-21T19:11:39Z
+applicationsets.argoproj.io                  2025-02-24T16:32:19Z
+appprojects.argoproj.io                      2025-02-24T16:32:20Z
+
+```
+
+2. Remove the CRD
+To delete a specific CRD, use the following command:
+```
+kubectl delete CRD_NAME
+```
+
+3. Handle Finalizers (If Necessary)
+If the deletion is not occurring, you may need to remove the finalizers associated with your application or the problematic resource. Replace APP_NAME and CRD_NAME with the appropriate names:
+
+```
+kubectl patch app APP_NAME -p '{"metadata": {"finalizers": null}}' --type merge
+kubectl patch crd CRD_NAME -p '{"metadata": {"finalizers": null}}' --type merge
+```
