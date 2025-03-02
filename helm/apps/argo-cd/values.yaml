@@ -4,8 +4,8 @@ namespaceOverride: "argocd"
 createClusterRoles: false
 
 crds:
-  install: false
-  keep: true
+  install: true
+  keep: false
   annotations: {}
   additionalLabels: {}
 
