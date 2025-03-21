@@ -1,0 +1,860 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 20,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "collapsed": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cegi7w6iskflsa"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 10,
+        "panels": [],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "All",
+        "type": "row"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cegi7w6iskflsa"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "links": []
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "hiddenSeries": false,
+        "id": 2,
+        "legend": {
+          "alignAsTable": true,
+          "avg": false,
+          "current": true,
+          "max": true,
+          "min": true,
+          "rightSide": true,
+          "show": true,
+          "total": false,
+          "values": true
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "10.1.0",
+        "pointradius": 0.5,
+        "points": true,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "expr": "sum(kube_node_labels{})",
+            "interval": "",
+            "intervalFactor": 3,
+            "legendFormat": "Total",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "expr": "sum(kube_node_labels{label_spotinst_io_node_lifecycle=\"spot\"})",
+            "interval": "",
+            "legendFormat": "SPOT",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "expr": "sum(kube_node_labels{label_spotinst_io_node_lifecycle!=\"spot\"})",
+            "interval": "",
+            "legendFormat": "OD",
+            "refId": "C"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Instance Status",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:572",
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "$$hashKey": "object:573",
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "collapsed": true,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cegi7w6iskflsa"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 9
+        },
+        "id": 12,
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 0,
+              "y": 10
+            },
+            "hiddenSeries": false,
+            "id": 3,
+            "legend": {
+              "alignAsTable": false,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+              "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 0.5,
+            "points": true,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "cegi7w6iskflsa"
+                },
+                "expr": "sum by (label_beta_kubernetes_io_instance_type) (kube_node_labels{label_spotinst_io_node_lifecycle!=\"spot\"})",
+                "interval": "",
+                "intervalFactor": 3,
+                "legendFormat": "{{label_beta_kubernetes_io_instance_type}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Instance OD by Flavor",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "$$hashKey": "object:374",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              },
+              {
+                "$$hashKey": "object:375",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 12,
+              "y": 10
+            },
+            "hiddenSeries": false,
+            "id": 4,
+            "legend": {
+              "alignAsTable": false,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+              "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 0.5,
+            "points": true,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "cegi7w6iskflsa"
+                },
+                "expr": "sum by (label_beta_kubernetes_io_instance_type) (kube_node_labels{label_spotinst_io_node_lifecycle=\"spot\"})",
+                "interval": "",
+                "intervalFactor": 3,
+                "legendFormat": "{{label_beta_kubernetes_io_instance_type}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Instance SPOT by Flavor",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "$$hashKey": "object:374",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              },
+              {
+                "$$hashKey": "object:375",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false
+            }
+          }
+        ],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "Flavor",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cegi7w6iskflsa"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 14,
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 0,
+              "y": 11
+            },
+            "hiddenSeries": false,
+            "id": 5,
+            "legend": {
+              "alignAsTable": false,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+              "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 0.5,
+            "points": true,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "cegi7w6iskflsa"
+                },
+                "expr": "sum by (label_failure_domain_beta_kubernetes_io_zone) (kube_node_labels{label_spotinst_io_node_lifecycle!=\"spot\"})",
+                "interval": "",
+                "intervalFactor": 3,
+                "legendFormat": "{{label_failure_domain_beta_kubernetes_io_zone}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Instance OD by Zone",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "$$hashKey": "object:374",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              },
+              {
+                "$$hashKey": "object:375",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 12,
+              "y": 11
+            },
+            "hiddenSeries": false,
+            "id": 6,
+            "legend": {
+              "alignAsTable": false,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+              "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 0.5,
+            "points": true,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "cegi7w6iskflsa"
+                },
+                "expr": "sum by (label_failure_domain_beta_kubernetes_io_zone) (kube_node_labels{label_spotinst_io_node_lifecycle=\"spot\"})",
+                "interval": "",
+                "intervalFactor": 3,
+                "legendFormat": "{{label_failure_domain_beta_kubernetes_io_zone}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Instance SPOT by Zone",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "$$hashKey": "object:374",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              },
+              {
+                "$$hashKey": "object:375",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false
+            }
+          }
+        ],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "Zone",
+        "type": "row"
+      },
+      {
+        "collapsed": true,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cegi7w6iskflsa"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 11
+        },
+        "id": 16,
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "fill": 0,
+            "fillGradient": 0,
+            "gridPos": {
+              "h": 7,
+              "w": 24,
+              "x": 0,
+              "y": 12
+            },
+            "hiddenSeries": false,
+            "id": 8,
+            "legend": {
+              "alignAsTable": true,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+              "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 0.5,
+            "points": true,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "cegi7w6iskflsa"
+                },
+                "expr": "sum by (label_failure_domain_beta_kubernetes_io_zone,label_beta_kubernetes_io_instance_type) (kube_node_labels{label_spotinst_io_node_lifecycle=\"spot\"})",
+                "interval": "",
+                "intervalFactor": 2,
+                "legendFormat": "{{label_failure_domain_beta_kubernetes_io_zone}} - {{label_beta_kubernetes_io_instance_type}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Instance SPOT by Zone/Flavor",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "$$hashKey": "object:374",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              },
+              {
+                "$$hashKey": "object:375",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false
+            }
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {}
+              },
+              "overrides": []
+            },
+            "fill": 0,
+            "fillGradient": 0,
+            "gridPos": {
+              "h": 7,
+              "w": 24,
+              "x": 0,
+              "y": 19
+            },
+            "hiddenSeries": false,
+            "id": 7,
+            "legend": {
+              "alignAsTable": true,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+              "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 0.5,
+            "points": true,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "cegi7w6iskflsa"
+                },
+                "expr": "sum by (label_failure_domain_beta_kubernetes_io_zone,label_beta_kubernetes_io_instance_type) (kube_node_labels{label_spotinst_io_node_lifecycle!=\"spot\"})",
+                "interval": "",
+                "intervalFactor": 2,
+                "legendFormat": "{{label_failure_domain_beta_kubernetes_io_zone}} - {{label_beta_kubernetes_io_instance_type}}",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Instance OD by Zone/Flavor",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "$$hashKey": "object:374",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              },
+              {
+                "$$hashKey": "object:375",
+                "format": "short",
+                "logBase": 1,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false
+            }
+          }
+        ],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cegi7w6iskflsa"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "Zone/Flavor",
+        "type": "row"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "Node Status",
+    "uid": "4Fv5loIGz",
+    "version": 38,
+    "weekStart": ""
+  }
